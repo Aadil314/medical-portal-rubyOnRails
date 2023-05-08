@@ -1,0 +1,44 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+// using bootstrap
+@import "bootstrap";
+
+body {
+    background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/white_carbon.png");
+    background-repeat: repeat;
+}
+
+li, .navbar, td {
+    background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/fabric_1.png");
+    background-repeat: repeat;
+}
+
+// there was an issue with using link tag for signout so
+// used button instead, additional styling to make it fit the navbar theme-
+.signout {
+    padding: 13px;
+}
+.signout:hover {
+    text-decoration: none;
+}
+
+// small tweaks on delete button in receptionistpage
+.delete{
+    margin-top: 5px;
+    padding: 6px 14.5px;
+}
+

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  doctor_name: MyString
+  appointment_date: 2023-05-08
+  appointment_time: 2023-05-08 03:44:39
+
+two:
+  name: MyString
+  doctor_name: MyString
+  appointment_date: 2023-05-08
+  appointment_time: 2023-05-08 03:44:39

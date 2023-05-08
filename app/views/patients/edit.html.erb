@@ -1,0 +1,27 @@
+<div class="container">    
+    <%= form_with model: @appointment, url: patient_path(@appointment), method: :patch, local: true do |f| %>
+    <div class="form-group">
+        <%= f.label :name %><br>
+        <%= f.text_field :name, class: "form-control", autofocus: true, autocomplete: "name" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :doctor_name %><br>
+        <%= f.collection_select :doctor_name, Doctor.all, :username, :username, { prompt: 'Select Doctor' }, { class: "form-control" } %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :appointment_date %><br>
+        <%= f.date_field :appointment_date, class: "form-control", autocomplete: "appointment_date" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :appointment_time %><br>
+        <%= f.time_field :appointment_time, class: "form-control", autocomplete: "appointment_time" %>
+    </div>
+
+    <div class="actions">
+        <%= f.submit 'Update', class: "btn btn-primary" %>
+    </div>
+    <% end %>
+</div>

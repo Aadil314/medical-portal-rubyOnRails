@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Doctor Page</title>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1>Doctor Page</h1>
+      <p>Welcome <%= current_user.username %>! Here you can view and manage your patients.</p>
+
+      <div class="card mb-5">
+        <div class="card-header">
+          <h2>Appointments Today</h2>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Doctor Name</th>
+                <th>Date</th>
+                <th>Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% Patient.where(doctor_name: current_user.username, appointment_date: Date.today).each do |patient| %>
+                <tr>
+                  <td><%= patient.name %></td>
+                  <td><%= patient.doctor_name %></td>
+                  <td><%= patient.appointment_date %></td>
+                  <td><%= patient.appointment_time.strftime('%I:%M %p') %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card mb-5">
+        <div class="card-header">
+          <h2>All Active Appointments</h2>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Doctor Name</th>
+                <th>Date</th>
+                <th>Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% Patient.where(doctor_name: current_user.username).each do |patient| %>
+                <tr>
+                  <td><%= patient.name %></td>
+                  <td><%= patient.doctor_name %></td>
+                  <td><%= patient.appointment_date %></td>
+                  <td><%= patient.appointment_time.strftime('%I:%M %p') %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>Patients vs Days Chart</h2>
+        </div>
+        <div class="card-body chart-container">
+          <% data = {} %>
+          <% (0..6).each do |n| %>
+            <% date = Date.today + n.days %>
+            <% count = Patient.where(doctor_name: current_user.username, appointment_date: date).count %>
+            <% data["Day #{n+1}"] = count %>
+          <% end %>
+          <%= line_chart data %>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
