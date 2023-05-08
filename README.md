@@ -1,5 +1,7 @@
 # README
 
+NOTE: demo vedio of the application is uploaded in the repo, named 'working_example.mp4'
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
